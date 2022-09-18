@@ -79,7 +79,6 @@ Vault Unseal keys      :
 ```
 ```
 $ echo '127.0.0.1 vault.local.test' | sudo tee -a /etc/hosts
-$ export VAULT_ADDR=https://vault.local.test:9980
 ```
 ```
 $ Runtime/anjuna-runtime --provision vault
@@ -134,6 +133,8 @@ $ Runtime/anjuna-runtime vault
 
 # 5. Unseal Vault
 ```
+$ export VAULT_CACERT=$(realpath config/ca.crt)
+$ export VAULT_ADDR=https://vault.local.test:9980
 $ vault operator unseal 
 Unseal Key (will be hidden): jlQDmfC1zr8O9qBH4lQTXXYq59mKszSbcfWeYOThiXXX  <--- Input your 1st unseal key
 Key                Value
