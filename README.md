@@ -1,4 +1,5 @@
 # anjuna-SGX
+> https://github.com/hashicorp-japan/vault-workshop-jp/blob/master/contents/hello-vault.md
 
 # 1. Install Ubuntu 16.04 LTS
 ```
@@ -177,4 +178,13 @@ token_renewable      false
 token_policies       ["root"]
 identity_policies    []
 policies             ["root"]
+```
+```
+$ vault secrets list
+Path          Type         Accessor              Description
+----          ----         --------              -----------
+cubbyhole/    cubbyhole    cubbyhole_bb74e2c0    per-token private secret storage
+identity/     identity     identity_c25b974c     identity store
+pki/          pki          pki_e9862800          n/a
+sys/          system       system_266cf2c8       system endpoints used for control, policy and debugging
 ```
