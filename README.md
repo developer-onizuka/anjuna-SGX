@@ -4,8 +4,12 @@
 Hashicorp Vault is a popular tool for secrets management, encryption as a service and privileged access management. But a way to secure Hashicorp Vault from attackers that have complete control of the host server, by loading the application into a Secure Enclave.<br>
 Anjuna leverages intel's SGX technology in addition to other technologies as abstraction layer around confidential computing. So we can utilize SGX for many solutions such as Vault easily.
 
-# 1. Install Ubuntu 16.04 LTS
+# 1. Install Ubuntu 16.04 LTS with SGX enabled Xeon
 ```
+$ sudo dmidecode |grep -i xeon
+	Family: Xeon
+	Version: Intel(R) Xeon(R) CPU E3-1270 v5 @ 3.60GHz
+
 $ uname -r
 4.15.0-142-generic
 ```
