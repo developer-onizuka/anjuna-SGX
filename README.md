@@ -50,6 +50,7 @@ $ source $ANJUNA_HOME/env.sh
 $ mkdir vault-tutorial
 $ cd vault-tutorial
 ```
+
 **You may write Unseal keys and Root Token down somewhere.<br> **
 ```
 $ anjuna-tutorial-quick-vault-setup --port 9980
