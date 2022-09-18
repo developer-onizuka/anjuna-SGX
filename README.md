@@ -36,3 +36,77 @@ Execute the following commands to set up your environment
 
 source /mnt/sgx/anjuna-vault-0.22.0005/env.sh
 ```
+
+# 4. Tutorial
+```
+$ export ANJUNA_HOME=/mnt/sgx/anjuna-vault-0.22.0005
+$ source $ANJUNA_HOME/env.sh
+```
+```
+$ mkdir vault-tutorial
+$ cd vault-tutorial
+```
+```
+$ anjuna-tutorial-quick-vault-setup --port 9980
+Launching Anjuna Tutorial Vault instance...
+Initializing Vault...
+Unsealing Vault...
+Using unseal key #1...
+Using unseal key #2...
+Using unseal key #3...
+Vault server unsealed
+Connection to Vault...
+Generating test wildcard certificate...
+TLS certificates generated
+Warning:
+To use the Vault TLS certificate, the following entry should be added to /etc/hosts:
+127.0.0.1 vault.local.test
+
+Run the following command to add this entry to /etc/hosts
+    $ echo '127.0.0.1 vault.local.test' | sudo tee -a /etc/hosts
+
+Success: A test Vault configuration was created!
+Vault Address          : https://vault.local.test:9980
+
+... snip ...
+
+```
+```
+$ Runtime/anjuna-runtime --provision vault
+Anjuna Runtime version 0.22.0005, Copyright (C) Anjuna Security, Inc. All rights reserved.
+Enclave initialized:
+    Enclave base address:           0x0000000000000000
+    Enclave size:                   2GB
+    Maximum number of threads:      64
+    Enclave attributes:             0x0000000000000007
+    Enclave SSA frame size:         1
+    
+... snip ...
+
+The provisioning for this enclave has been completed:
+- provisioning secret key (SGX-encrypted) : vault.key.sealed
+- provisioning public key                 : vault.provision.key
+- SGX report created                      : vault.report.bin
+- SGX quote created                       : vault.quote.bin
+
+Secrets can be provisioned for this enclave by encrypting files using
+the provisioning public key [vault.provision.key]:
+
+    anjuna-prov-seal --public-key vault.provision.key FILE_TO_BE_SEALED
+
+
+Before provisioning secrets for this enclave, make sure to run the Anjuna Attestation utility (anjuna-check-attestation)
+to confirm that this enclave can be trusted:
+
+    anjuna-check-attestation --quote-file vault.quote.bin --rsa-key-file vault.provision.key
+```
+
+```
+$ anjuna-check-attestation --quote-file vault.quote.bin --rsa-key-file vault.provision.key
+INFO SHA512 of RSA DER BYTES: 
+
+... snip ...
+
+DEBUG Attestation complete                         
+INFO Quote status: OK
+```
