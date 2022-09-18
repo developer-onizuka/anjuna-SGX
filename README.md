@@ -85,7 +85,7 @@ Vault Unseal keys      :
 ```
 $ echo '127.0.0.1 vault.local.test' | sudo tee -a /etc/hosts
 ```
-**Make vault emvironments through anjuna-runtime.<br>**
+**Make vault environments through anjuna-runtime.<br>**
 ```
 $ Runtime/anjuna-runtime --provision vault
 Anjuna Runtime version 0.22.0005, Copyright (C) Anjuna Security, Inc. All rights reserved.
