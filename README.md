@@ -51,7 +51,7 @@ $ mkdir vault-tutorial
 $ cd vault-tutorial
 ```
 
-**You may write Unseal keys and Root Token down somewhere.<br> **
+**You may write Unseal keys and Root Token down somewhere.**
 ```
 $ anjuna-tutorial-quick-vault-setup --port 9980
 Launching Anjuna Tutorial Vault instance...
