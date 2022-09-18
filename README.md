@@ -181,6 +181,8 @@ token_policies       ["root"]
 identity_policies    []
 policies             ["root"]
 ```
+
+# 6. Your First Secret
 ```
 $ vault secrets list
 Path          Type         Accessor              Description
@@ -189,4 +191,26 @@ cubbyhole/    cubbyhole    cubbyhole_bb74e2c0    per-token private secret storag
 identity/     identity     identity_c25b974c     identity store
 pki/          pki          pki_e9862800          n/a
 sys/          system       system_266cf2c8       system endpoints used for control, policy and debugging
+```
+```
+$ vault secrets enable -path=kv kv
+
+$ vault secrets list
+Path          Type         Accessor              Description
+----          ----         --------              -----------
+cubbyhole/    cubbyhole    cubbyhole_bb74e2c0    per-token private secret storage
+identity/     identity     identity_c25b974c     identity store
+kv/           kv           kv_9a6d9836           n/a
+pki/          pki          pki_e9862800          n/a
+sys/          system       system_266cf2c8       system endpoints used for control, policy and debugging
+```
+```
+$ vault kv put kv/my-secret connection-string=ABCDEFGHIJKLMN
+Success! Data written to: kv/my-secret
+
+$ vault kv get kv/my-secret 
+========== Data ==========
+Key                  Value
+---                  -----
+connection-string    ABCDEFGHIJKLMN
 ```
