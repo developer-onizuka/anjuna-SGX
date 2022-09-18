@@ -165,6 +165,7 @@ Version            1.1.3
 HA Enabled         false
 ```
 **Input 2nd unseal key**
+<br>You can find Sealed is false.
 ```
 $ vault operator unseal 
 Unseal Key (will be hidden): DlIy28aNqQIX45Jtb0vM93C/5PM1VPrEAzEQVoOk+XXX  <--- Input your 2nd unseal key
