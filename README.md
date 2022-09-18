@@ -121,5 +121,6 @@ $ anjuna-prov-seal --public-key vault.provision.key config/vault_tls.key
 Sealed config/vault_tls.key to config/vault_tls.key.sealed
 ```
 ```
+$ export VAULT_API_ADDR='http://127.0.0.1:9980'
 $ Runtime/anjuna-runtime vault 
 ```
