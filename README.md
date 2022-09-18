@@ -110,3 +110,9 @@ INFO SHA512 of RSA DER BYTES:
 DEBUG Attestation complete                         
 INFO Quote status: OK
 ```
+```
+$ anjuna-prov-seal --public-key vault.provision.key config/vault_config.hcl
+Sealed config/vault_config.hcl to config/vault_config.hcl.sealed
+$ anjuna-prov-seal --public-key vault.provision.key config/vault_tls.key
+Sealed config/vault_tls.key to config/vault_tls.key.sealed
+```
