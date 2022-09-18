@@ -231,3 +231,19 @@ Key                  Value
 ---                  -----
 connection-string    ABCDEFGHIJKLMN
 ```
+
+# 7. Seal Vault
+```
+$ vault operator seal
+Success! Vault is sealed.
+```
+**You can not retrive your secrets after sealing.**
+```
+$ vault kv get kv/my-secret
+Error making API request.
+
+URL: GET https://vault.local.test:9980/v1/sys/internal/ui/mounts/kv/my-secret
+Code: 503. Errors:
+
+* error performing token check: Vault is sealed
+```
