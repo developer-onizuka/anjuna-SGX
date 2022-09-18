@@ -72,6 +72,9 @@ Vault Address          : https://vault.local.test:9980
 
 ```
 ```
+$ echo '127.0.0.1 vault.local.test' | sudo tee -a /etc/hosts
+```
+```
 $ Runtime/anjuna-runtime --provision vault
 Anjuna Runtime version 0.22.0005, Copyright (C) Anjuna Security, Inc. All rights reserved.
 Enclave initialized:
