@@ -1,5 +1,8 @@
 # anjuna-SGX
-> https://github.com/hashicorp-japan/vault-workshop-jp/blob/master/contents/hello-vault.md
+> https://docs.anjunasecurity.com/vault/intro.html
+
+Hashicorp Vault is a popular tool for secrets management, encryption as a service and privileged access management. But a way to secure HashiCorp Vault from attackers that have complete control of the host server, by loading the application into a Secure Enclave.<br>
+Anjuna leverages intel's SGX technology in addition to other technologies as abstraction layer around confidential computing. So we can utilize SGX so easy.
 
 # 1. Install Ubuntu 16.04 LTS
 ```
@@ -47,6 +50,7 @@ $ source $ANJUNA_HOME/env.sh
 $ mkdir vault-tutorial
 $ cd vault-tutorial
 ```
+**You may write Unseal keys and Root Token down somewhere.<br> **
 ```
 $ anjuna-tutorial-quick-vault-setup --port 9980
 Launching Anjuna Tutorial Vault instance...
@@ -80,6 +84,7 @@ Vault Unseal keys      :
 ```
 $ echo '127.0.0.1 vault.local.test' | sudo tee -a /etc/hosts
 ```
+**Make vault emvironments through anjuna-runtime.<br>**
 ```
 $ Runtime/anjuna-runtime --provision vault
 Anjuna Runtime version 0.22.0005, Copyright (C) Anjuna Security, Inc. All rights reserved.
@@ -110,6 +115,7 @@ to confirm that this enclave can be trusted:
     anjuna-check-attestation --quote-file vault.quote.bin --rsa-key-file vault.provision.key
 ```
 
+**If you find some error, you may disable Intel HyperThreading.<br>**
 ```
 $ anjuna-check-attestation --quote-file vault.quote.bin --rsa-key-file vault.provision.key
 INFO SHA512 of RSA DER BYTES: 
@@ -126,15 +132,21 @@ Sealed config/vault_config.hcl to config/vault_config.hcl.sealed
 $ anjuna-prov-seal --public-key vault.provision.key config/vault_tls.key
 Sealed config/vault_tls.key to config/vault_tls.key.sealed
 ```
+**Run vault through anjuna-runtime.<br>**
 ```
 $ export VAULT_API_ADDR='http://127.0.0.1:9980'
 $ Runtime/anjuna-runtime vault 
 ```
 
 # 5. Unseal Vault
+How to unseal Vault itself
+> https://github.com/hashicorp-japan/vault-workshop-jp/blob/master/contents/hello-vault.md
+
 ```
 $ export VAULT_CACERT=$(realpath config/ca.crt)
+
 $ export VAULT_ADDR=https://vault.local.test:9980
+
 $ vault operator unseal 
 Unseal Key (will be hidden): jlQDmfC1zr8O9qBH4lQTXXYq59mKszSbcfWeYOThiXXX  <--- Input your 1st unseal key
 Key                Value
