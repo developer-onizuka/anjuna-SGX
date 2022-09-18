@@ -37,7 +37,7 @@ Execute the following commands to set up your environment
 source /mnt/sgx/anjuna-vault-0.22.0005/env.sh
 ```
 
-# 4. Tutorial
+# 4. Run vault with anjuna Runtime for Intel SGX
 ```
 $ export ANJUNA_HOME=/mnt/sgx/anjuna-vault-0.22.0005
 $ source $ANJUNA_HOME/env.sh
@@ -70,6 +70,11 @@ Vault Address          : https://vault.local.test:9980
 
 ... snip ...
 
+Vault Root Token       : # root_token: s.LvFa3beZo4cLYWHhYd4sVXXX
+Vault Unseal keys      :
+- jlQDmfC1zr8O9qBH4lQTXXYq59mKszSbcfWeYOThiXXX
+- 9r7ICgsu3MNRZh58j+HiHpzCkuJZ2RAS8/SGm/ZC0XXX
+- DlIy28aNqQIX45Jtb0vM93C/5PM1VPrEAzEQVoOk+XXX
 ```
 ```
 $ echo '127.0.0.1 vault.local.test' | sudo tee -a /etc/hosts
@@ -123,4 +128,53 @@ Sealed config/vault_tls.key to config/vault_tls.key.sealed
 ```
 $ export VAULT_API_ADDR='http://127.0.0.1:9980'
 $ Runtime/anjuna-runtime vault 
+```
+
+# 5. Unseal Vault
+```
+$ vault operator unseal 
+Unseal Key (will be hidden): jlQDmfC1zr8O9qBH4lQTXXYq59mKszSbcfWeYOThiXXX  <--- Input your 1st unseal key
+Key                Value
+---                -----
+Seal Type          shamir
+Initialized        true
+Sealed             true
+Total Shares       3
+Threshold          2
+Unseal Progress    1/2
+Unseal Nonce       f078a8c7-6447-82cc-672e-8da24365ea59
+Version            1.1.3
+HA Enabled         false
+```
+```
+$ vault operator unseal 
+Unseal Key (will be hidden): DlIy28aNqQIX45Jtb0vM93C/5PM1VPrEAzEQVoOk+XXX  <--- Input your 2nd unseal key
+Key             Value
+---             -----
+Seal Type       shamir
+Initialized     true
+Sealed          false
+Total Shares    3
+Threshold       2
+Version         1.1.3
+Cluster Name    vault-cluster-0143903c
+Cluster ID      b4205ab2-0764-fe97-b6a7-9bd1edb11c56
+HA Enabled      false
+```
+```
+$ vault login
+Token (will be hidden): s.LvFa3beZo4cLYWHhYd4sVXXX <--- Input your root_token
+Success! You are now authenticated. The token information displayed below
+is already stored in the token helper. You do NOT need to run "vault login"
+again. Future Vault requests will automatically use this token.
+
+Key                  Value
+---                  -----
+token                s.LvFa3beZo4cLYWHhYd4sVXXX
+token_accessor       1pv5f5ykyJuzElgdIoFydXXX
+token_duration       ∞
+token_renewable      false
+token_policies       ["root"]
+identity_policies    []
+policies             ["root"]
 ```
