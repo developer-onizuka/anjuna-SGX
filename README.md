@@ -147,7 +147,9 @@ How to unseal Vault itself
 $ export VAULT_CACERT=$(realpath config/ca.crt)
 
 $ export VAULT_ADDR=https://vault.local.test:9980
-
+```
+**Input 1st unseal key**
+```
 $ vault operator unseal 
 Unseal Key (will be hidden): jlQDmfC1zr8O9qBH4lQTXXYq59mKszSbcfWeYOThiXXX  <--- Input your 1st unseal key
 Key                Value
@@ -162,6 +164,7 @@ Unseal Nonce       f078a8c7-6447-82cc-672e-8da24365ea59
 Version            1.1.3
 HA Enabled         false
 ```
+**Input 2nd unseal key**
 ```
 $ vault operator unseal 
 Unseal Key (will be hidden): DlIy28aNqQIX45Jtb0vM93C/5PM1VPrEAzEQVoOk+XXX  <--- Input your 2nd unseal key
