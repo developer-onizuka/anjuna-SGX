@@ -44,15 +44,16 @@ source /mnt/sgx/anjuna-vault-0.22.0005/env.sh
 ```
 
 # 4. Run vault with anjuna Runtime for Intel SGX
+**Export some environments through the file in anjuna-vault's directory.**
 ```
 $ export ANJUNA_HOME=/mnt/sgx/anjuna-vault-0.22.0005
 $ source $ANJUNA_HOME/env.sh
 ```
+**Create a directory for the tutorial.**
 ```
 $ mkdir vault-tutorial
 $ cd vault-tutorial
 ```
-
 **You may write Unseal keys and Root Token down somewhere.**
 ```
 $ anjuna-tutorial-quick-vault-setup --port 9980
@@ -117,7 +118,6 @@ to confirm that this enclave can be trusted:
 
     anjuna-check-attestation --quote-file vault.quote.bin --rsa-key-file vault.provision.key
 ```
-
 **If you find some error, you may disable Intel HyperThreading.<br>**
 ```
 $ anjuna-check-attestation --quote-file vault.quote.bin --rsa-key-file vault.provision.key
@@ -145,7 +145,7 @@ $ Runtime/anjuna-runtime vault
 ```
 
 # 5. Unseal Vault
-How to unseal Vault itself
+**How to unseal Vault itself**
 > https://github.com/hashicorp-japan/vault-workshop-jp/blob/master/contents/hello-vault.md
 
 ```
