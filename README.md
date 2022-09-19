@@ -6,7 +6,7 @@ Enterprises are moving towards a multi-cloud deployment model while adopting a z
 Anjuna leverages intel's SGX technology in addition to other technologies as abstraction layer around confidential computing. So we can utilize SGX for many solutions such as Vault easily.
 
 # 1. Install Ubuntu 16.04 LTS with SGX enabled Xeon
-My home lab's Xeon is here.
+My home lab's Xeon and Ubuntu are here.
 ```
 $ sudo dmidecode |grep -i xeon
 	Family: Xeon
