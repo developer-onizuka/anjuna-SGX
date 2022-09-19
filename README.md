@@ -128,12 +128,14 @@ INFO SHA512 of RSA DER BYTES:
 DEBUG Attestation complete                         
 INFO Quote status: OK
 ```
+**The config/vault_tls.key is a file of private key for "config/vault_tls.crt" and it should be sealed by "anjuna-prov-seal" command which is provided by anjuna. So that the vault_tls.key can not be available even if it is moved to other machines.**
+```
+$ anjuna-prov-seal --public-key vault.provision.key config/vault_tls.key
+Sealed config/vault_tls.key to config/vault_tls.key.sealed
+```
 ```
 $ anjuna-prov-seal --public-key vault.provision.key config/vault_config.hcl
 Sealed config/vault_config.hcl to config/vault_config.hcl.sealed
-
-$ anjuna-prov-seal --public-key vault.provision.key config/vault_tls.key
-Sealed config/vault_tls.key to config/vault_tls.key.sealed
 ```
 **Run vault through anjuna-runtime.<br>**
 ```
