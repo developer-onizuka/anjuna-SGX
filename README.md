@@ -1,5 +1,7 @@
 # anjuna-SGX
 > https://docs.anjunasecurity.com/vault/intro.html <br>
+> https://builders.intel.com/docs/networkbuilders/zero-trust-rethink-zero-trust-with-intel-confidential-computing-technology-guide-1651606535.pdf <br>
+
 Enterprises are moving towards a multi-cloud deployment model while adopting a zerotrust security model to ensure a consistent security posture in all cases. Hashicorp Vault is a popular tool for secrets management, encryption as a service and privileged access management. But a way to secure Hashicorp Vault from attackers that have complete control of the host server, by loading the application into a Secure Enclave.<br>
 Anjuna leverages intel's SGX technology in addition to other technologies as abstraction layer around confidential computing. So we can utilize SGX for many solutions such as Vault easily.
 
