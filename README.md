@@ -241,6 +241,7 @@ connection-string    ABCDEFGHIJKLMN
 
 **You can also retrive secrets through webAPI.**
 ```
+$ export VALUT_TOKEN=s.LvFa3beZo4cLYWHhYd4sVXXX
 $ curl -ks -H "X-Vault-Token:$VALUT_TOKEN" https://vault.local.test:9980/v1/kv/my-secret |jq
 {
   "request_id": "1ffc0471-1367-e2c8-8085-0ced19764dff",
