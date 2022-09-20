@@ -239,6 +239,23 @@ Key                  Value
 connection-string    ABCDEFGHIJKLMN
 ```
 
+**You can also retrive secrets through webAPI.**
+```
+$ curl -ks -H "X-Vault-Token:$VALUT_TOKEN" https://vault.local.test:9980/v1/kv/my-secret |jq
+{
+  "request_id": "1ffc0471-1367-e2c8-8085-0ced19764dff",
+  "lease_id": "",
+  "renewable": false,
+  "lease_duration": 2764800,
+  "data": {
+    "connection-string": "ABCDEFGHIJKLMN"
+  },
+  "wrap_info": null,
+  "warnings": null,
+  "auth": null
+}
+```
+
 # 7. Seal Vault
 ```
 $ vault operator seal
