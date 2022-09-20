@@ -243,6 +243,20 @@ connection-string    ABCDEFGHIJKLMN
 ```
 $ export VALUT_TOKEN=s.LvFa3beZo4cLYWHhYd4sVXXX
 
+$ curl -ks -H "X-Vault-Token:$VALUT_TOKEN" https://vault.local.test:9980/v1/kv/my-secret |jq 
+{
+  "request_id": "f792323d-6b8b-bafa-9f26-e67ab1c22497",
+  "lease_id": "",
+  "renewable": false,
+  "lease_duration": 2764800,
+  "data": {
+    "connection-string": "ABCDEFGHIJKLMN"
+  },
+  "wrap_info": null,
+  "warnings": null,
+  "auth": null
+}
+
 $ curl -ks -H "X-Vault-Token:$VALUT_TOKEN" https://vault.local.test:9980/v1/kv/my-secret |jq .data
 {
   "connection-string": "ABCDEFGHIJKLMN"
